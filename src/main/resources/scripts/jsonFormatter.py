@@ -31,14 +31,15 @@ count = 0
 
 for line in inF:
     count += 1
-    match = re.search(r'(.*)(".*"):.*(".*")', line)
+    match = re.search(r'(.*)(".*"):.*(".*")(.*)', line)
     if match:
         beginning_of_the_line = match.group(1)
         first = match.group(2)
         second = match.group(3)
+        end_of_the_line = match.group(4)
         first = format_value(first)
         second = format_value(second)
-        outputLine = "{}{}: {}".format(beginning_of_the_line, first, second)
+        outputLine = "{}{}: {}{}".format(beginning_of_the_line, first, second, end_of_the_line)
         lineToWrite = outputLine + "\n"
     else:
         lineToWrite = line.replace("\"", "\'")
