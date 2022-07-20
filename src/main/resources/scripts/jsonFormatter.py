@@ -31,7 +31,7 @@ count = 0
 
 for line in inF:
     count += 1
-    match = re.search(r'(.*)(".*":).*(".*")', line)
+    match = re.search(r'(.*)(".*"):.*(".*")', line)
     if match:
         beginning_of_the_line = match.group(1)
         first = match.group(2)
@@ -41,7 +41,7 @@ for line in inF:
         outputLine = "{}{}: {}".format(beginning_of_the_line, first, second)
         lineToWrite = outputLine + "\n"
     else:
-        lineToWrite = line
+        lineToWrite = line.replace("\"", "\'")
     outF.write(lineToWrite)
 
 # Closing files
