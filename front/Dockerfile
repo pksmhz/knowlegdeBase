@@ -1,4 +1,4 @@
-FROM eclipse-temurin:18-alpine
+FROM eclipse-temurin:20-jre-alpine
 RUN mkdir /opt/app
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} /opt/app/app.jar
