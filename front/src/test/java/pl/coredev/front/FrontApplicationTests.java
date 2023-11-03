@@ -22,10 +22,12 @@ class FrontApplicationTests {
 
     @Test
     void test() throws IOException, InterruptedException, URISyntaxException {
-        var client = HttpClient.newHttpClient();
-        var url = nginx.getBaseUrl("http", 80);
-        var request = HttpRequest.newBuilder(url.toURI()).GET().build();
-        var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response;
+        try (var client = HttpClient.newHttpClient()) {
+            var url = nginx.getBaseUrl("http", 80);
+            var request = HttpRequest.newBuilder(url.toURI()).GET().build();
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        }
 
         Assertions.assertTrue(response.body().contains("Thank you for using nginx."));
     }

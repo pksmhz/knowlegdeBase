@@ -15,3 +15,7 @@ docker run -p 8085:8085 --name back_app app/back
 
 Scan:
 docker scout cves app/back
+
+Recomendations:
+docker scout recommendations app/back:latest
+
