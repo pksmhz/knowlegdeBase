@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>pl.coredev</groupId>
 	<artifactId>front</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>front</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -119,6 +119,6 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/pksmhz/knowlegdeBase.git</connection>
-	  <tag>front-0.0.2</tag>
+	  <tag>HEAD</tag>
   </scm>
 </project>
