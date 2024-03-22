@@ -6,4 +6,12 @@ import lombok.Data;
 public class OperationRequest {
     private int inputValue;
     private OperationType operationType;
+
+    @Override
+    public String toString() {
+        return "[OperationRequest] [ " +
+                "inputValue= " + inputValue +
+                ", operationType= " + operationType.toString() +
+                " ]";
+    }
 }

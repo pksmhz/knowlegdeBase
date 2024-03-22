@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.coredev.front.types.AllowedResponse;
 import pl.coredev.front.types.OperationRequest;
@@ -16,21 +15,27 @@ import java.util.Arrays;
 @RestController
 public class DoOperation {
 
-    @CrossOrigin
-    @PostMapping(value = "/operation")
-    public void doOperation(@RequestBody OperationRequest request) {
-        LOG.info("Request received. Values: 1:[{}], 2:[{}]", request.getInputValue(), request.getOperationType());
+    OperationService operationService;
 
-//        sender.send();
+    public DoOperation(OperationService operationService) {
+        this.operationService = operationService;
     }
 
     @CrossOrigin
     @PostMapping(value = "/allowed")
-    public @ResponseBody AllowedResponse getAllowed() {
+    public AllowedResponse getAllowed() {
         AllowedResponse response = new AllowedResponse();
         response.setAllowedOperations(Arrays.stream(OperationType.values())
                         .map(Enum::name)
                 .toList());
         return response;
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/operation")
+    public void doOperation(@RequestBody OperationRequest request) {
+        LOG.info("Request received: [{}]", request.toString());
+
+        operationService.saveOperation(request);
     }
 }

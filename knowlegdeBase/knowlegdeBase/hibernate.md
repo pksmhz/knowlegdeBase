@@ -1,3 +1,5 @@
+# Hibernate
+
 Kiedy pobieramy listę użytkowników i chcemy także pobrać powiązane z nimi adresy (np. korespondencyjny, zamieszkania), w domyślnej konfiguracji Hibernate dla każdej kolekcji adresów wykona dodatkowe zapytanie (per użytkownik). Jeśli chcemy pobrać listę 100 użytkowników to Hibernate wykona jedno zapytanie, żeby pobrać użytkowników (1 – zapytanie) i jeśli odczytamy dodatkowo dla każdego użytkownika listę adresów, to Hibernate wykona dodatkowo 100 zapytań po jednym dla każdego użytkownika (n – zapytań, gdzie n oznacza ilość użytkowników w tym przypadku 100).
 
 
@@ -42,11 +44,6 @@ We cover pessimistic locking in one of our previous articles — Pessimistic Loc
 
 As we've said before, optimistic locking is based on detecting changes on entities by checking their version attribute. If any concurrent update takes place, OptmisticLockException occurs. After that, we can retry updating the data.
 
-
-
-BlockingQueue<String> blockingQueue = new LinkedBlockingDeque<>(10);
-
-List<String> syncCollection = Collections.synchronizedList(Arrays.asList("a", "b", "c"));
 
 
 
