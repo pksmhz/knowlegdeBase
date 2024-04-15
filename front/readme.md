@@ -20,3 +20,7 @@ docker scout cves app/back
 Recommendations:
 docker scout recommendations app/back:latest
 
+
+Release:
+
+
