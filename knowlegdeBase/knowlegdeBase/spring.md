@@ -130,3 +130,34 @@ This annotation is used on a class. The @Service marks a Java class that perform
 This annotation is used on Java classes which directly access the database. The @Repository annotation works as marker for any class that fulfills the role of repository or Data Access Object.
 
 This annotation has an automatic translation feature. For example, when an exception occurs in the @Repository there is a handler for that exception and there is no need to add a try catch block.
+
+# Bean lifecycle
+
+To interact with the container’s management of the bean lifecycle, you can implement the Spring InitializingBean and DisposableBean interfaces. 
+The container calls afterPropertiesSet() for the former and destroy() for the latter to let the bean perform certain actions upon initialization and destruction of your beans.
+
+The Spring Framework supports six scopes, four of which are available only if you use a web-aware ApplicationContext. You can also create a custom scope.
+
+The following table describes the supported scopes:
+
+
+
+# Bean scopes
+
+* singleton (Default) 
+  * Scopes a single bean definition to a single object instance for each Spring IoC container.
+
+* prototype
+  * Scopes a single bean definition to any number of object instances.
+
+* request
+  * Scopes a single bean definition to the lifecycle of a single HTTP request. That is, each HTTP request has its own instance of a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring ApplicationContext.
+
+* session
+  * Scopes a single bean definition to the lifecycle of an HTTP Session. Only valid in the context of a web-aware Spring ApplicationContext.
+
+* application
+  * Scopes a single bean definition to the lifecycle of a ServletContext. Only valid in the context of a web-aware Spring ApplicationContext.
+
+* websocket
+  * Scopes a single bean definition to the lifecycle of a WebSocket. Only valid in the context of a web-aware Spring ApplicationContext.
