@@ -24,7 +24,7 @@ class DoOperationTest {
     private OperationService operationService;
 
     @InjectMocks
-    private DoOperation doOperation = new DoOperation(operationService);
+    private DoOperation doOperation;
 
 
     @BeforeEach
