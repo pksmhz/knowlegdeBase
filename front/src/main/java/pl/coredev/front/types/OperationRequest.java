@@ -9,9 +9,6 @@ public class OperationRequest {
 
     @Override
     public String toString() {
-        return "[OperationRequest] [ " +
-                "inputValue= " + inputValue +
-                ", operationType= " + operationType.toString() +
-                " ]";
+        return STR."[OperationRequest] [ inputValue= \{inputValue}, operationType= \{operationType.toString()} ]";
     }
 }

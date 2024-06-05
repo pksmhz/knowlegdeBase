@@ -2,14 +2,11 @@ package pl.coredev.front.calc;
 
 import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,21 +18,18 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @SpringBootTest
-@Disabled("Dependenices not updated")
 class DoOperationTest {
 
-    @InjectMocks
-    private DoOperation doOperation;
-
-    @MockBean
+    @Spy
     private OperationService operationService;
 
+    @InjectMocks
+    private DoOperation doOperation = new DoOperation(operationService);
 
 
     @BeforeEach
     public void initialiseRestAssuredMockMvcStandalone() {
-
-//        RestAssuredMockMvc.standaloneSetup(doOperation, operationService);
+        RestAssuredMockMvc.standaloneSetup(doOperation, operationService);
     }
 
     @Test
@@ -49,7 +43,6 @@ class DoOperationTest {
     }
 
     @Test
-    @Disabled("Dependenices not updated")
     void testSaveOperation() {
 
 
@@ -64,6 +57,6 @@ class DoOperationTest {
                 .when().post("/operation")
                 .then().statusCode(200);
 
-//        verify(operationService, times(1)).saveOperation(any());
+        verify(operationService, times(1)).saveOperation(any());
     }
 }
