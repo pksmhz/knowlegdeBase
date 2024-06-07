@@ -23,4 +23,4 @@ docker scout recommendations app/back:latest
 
 Release:
 
-
+release:prepare
