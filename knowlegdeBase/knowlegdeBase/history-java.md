@@ -7,7 +7,7 @@
   * 21
 
 
-* Java 8
+* **Java 8**
   * Lambda expressions 
   * Date and time API
 
@@ -17,7 +17,7 @@
 * Java 10
   * Local variable var
 
-* Java 11
+* **Java 11**
   * HTTP Client
   * ZGC garbage collector (low latency GC)
   
@@ -37,7 +37,7 @@
 * Java 16
   * Vector API
   
-* Java 17
+* **Java 17**
   * JEP 406: Pattern Matching for switch (Preview)
   * JEP 409: Sealed Classes
   
@@ -50,7 +50,7 @@
 * Java 20
   * c.d.
   
-* Java 21
+* **Java 21**
   * String templates
   * Sequenced collections
   * Generational ZGC
